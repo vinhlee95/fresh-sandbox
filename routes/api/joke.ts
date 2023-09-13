@@ -14,12 +14,16 @@ const JOKES = [
   "An SEO expert walked into a bar, pub, inn, tavern, hostelry, public house.",
 ];
 
+const JsonResponse = (status: number, body: string | object): Response => {
+  const stringifiedBody = typeof body === "string" ? body : JSON.stringify(body)
+
+  return new Response(stringifiedBody, {
+    headers: { "Content-Type": "application/json" },
+    status,
+  })
+}
+
 export const handler = (_req: Request, _ctx: HandlerContext): Response => {
   const randomIndex = Math.floor(Math.random() * JOKES.length);
-  const body = {message: JOKES[randomIndex]}
-  
-  return new Response(JSON.stringify(body), {
-    headers: { "Content-Type": "application/json" },
-    status: 200,
-  })
+  return JsonResponse(200, {message: JOKES[randomIndex]})
 };
