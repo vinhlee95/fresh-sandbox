@@ -42,7 +42,7 @@ export default function Page({ data }: PageProps<Data>) {
       <>
         <form>
           <input type="text" name="q" value={query} />
-          <button type="submit">Search</button>
+          <button type="submit">Search for user</button>
         </form>
         <ul>
           {results.map((name) => <li key={name}>{name}</li>)}
@@ -51,7 +51,7 @@ export default function Page({ data }: PageProps<Data>) {
       <>
         <form method="POST">
           <input type="text" name="subscriberEmail" value="" />
-          <button type="submit">Subscribe</button>
+          <button type="submit">Subscribe to our email list</button>
         </form>
       </>
     </div>
